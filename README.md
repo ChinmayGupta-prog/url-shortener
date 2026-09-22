@@ -10,7 +10,7 @@ A Java and Spring Boot service for turning long URLs into short links. The proje
 - Limit requests by IP with a token bucket.
 - Track click counts.
 
-The repository currently contains the application foundation and local infrastructure. URL creation and redirect endpoints are not implemented yet.
+The repository currently contains the application foundation, local infrastructure, and a database-backed URL model. URL creation and redirect endpoints are not implemented yet.
 
 ## Tech stack
 
@@ -36,7 +36,7 @@ mvn spring-boot:run
 
 The application starts at `http://localhost:8081`. PostgreSQL is available on `localhost:5434`, and Redis on `localhost:6380`. These host ports avoid conflicts with common local defaults. The services remain running after the application stops; use `docker compose down` to stop them. The PostgreSQL data stays in a Docker volume.
 
-The integration test starts the Spring application, runs `SELECT 1` against PostgreSQL, and pings Redis. Start the Compose services before running `mvn test`.
+The integration tests start the Spring application, check PostgreSQL and Redis connectivity, and verify that a URL can be saved and found by its short code. Start the Compose services before running `mvn test`.
 
 ## Configuration
 
@@ -58,7 +58,7 @@ Compose also accepts `POSTGRES_DB` and `POSTGRES_PORT` (defaults: `url_shortener
 
 ```text
 src/main/java/       Spring Boot application
-src/main/resources/  Application configuration and future Flyway migrations
+src/main/resources/  Application configuration and Flyway migrations
 src/test/java/       Integration tests
 docker-compose.yml   Local PostgreSQL and Redis
 ```
