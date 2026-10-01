@@ -10,7 +10,7 @@ A Java and Spring Boot service for turning long URLs into short links. The proje
 - Limit requests by IP with a token bucket.
 - Track click counts.
 
-The repository currently contains the application foundation, local infrastructure, and a database-backed URL model. URL creation and redirect endpoints are not implemented yet.
+The repository currently contains the application foundation, local infrastructure, a database-backed URL model, and Base62 conversion for short codes. Automatic URL creation and redirect endpoints are not implemented yet.
 
 ## Tech stack
 
